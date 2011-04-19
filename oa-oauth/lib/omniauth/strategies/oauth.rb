@@ -62,8 +62,9 @@ module OmniAuth
         fail!(:service_unavailable, e)
       rescue ::OAuth::Unauthorized => e
         fail!(:invalid_credentials, e)
-      rescue ::NoMethodError, ::MultiJson::DecodeError => e
-        fail!(:invalid_response, e)
+      # [LC] commented out because of incompatible version
+      #rescue ::NoMethodError, ::MultiJson::DecodeError => e
+      #  fail!(:invalid_response, e)
       end
 
       def auth_hash

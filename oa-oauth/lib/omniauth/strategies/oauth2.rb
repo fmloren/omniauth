@@ -78,8 +78,9 @@ module OmniAuth
         super
       rescue ::OAuth2::HTTPError, ::OAuth2::AccessDenied, CallbackError => e
         fail!(:invalid_credentials, e)
-      rescue ::MultiJson::DecodeError => e
-        fail!(:invalid_response, e)
+      # [LC] commented out because of incompatible version
+      #rescue ::MultiJson::DecodeError => e
+      #  fail!(:invalid_response, e)
       end
 
       def build_access_token
